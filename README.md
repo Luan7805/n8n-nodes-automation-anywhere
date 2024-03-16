@@ -3,7 +3,7 @@
 This project is a work in progress. The initial goal is to provide nodes for integrating n8n workflows with Automation Anywhere.
 
 ## Todo
-- [ ] Authentication node
+- [x] Authentication credentials
 - [ ] V3 Bot deploy API
 - [ ] V3 Bot Execution Orchestrator API
 
