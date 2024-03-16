@@ -1,0 +1,54 @@
+{
+  "name": "n8n-nodes-automation-anywhere",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "n8n-community-node-package",
+    "automation-anywhere"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "author": {
+    "name": "Luan Marques",
+    "email": "n8n@luanmarques.com.br"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luan7805/n8n-nodes-automation-anywhere.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && tsc && npm run build:images",
+    "clean": "rimraf dist/",
+    "build:images": "copyfiles nodes/**/*.svg nodes/**/*.png dist/",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+
+    ],
+    "nodes": [
+
+    ]
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/request-promise-native": "~1.0.15",
+    "@typescript-eslint/parser": "~6.3.0",
+    "copyfiles": "^2.4.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.0",
+    "n8n-core": "^1.32.0",
+    "n8n-workflow": "*",
+    "prettier": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "typescript": "~5.1.6"
+  }
+}
