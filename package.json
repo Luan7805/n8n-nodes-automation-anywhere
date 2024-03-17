@@ -36,7 +36,7 @@
       "dist/credentials/AutomationAnywhere.credentials.js"
     ],
     "nodes": [
-
+      "dist/nodes/AutomationAnywhere/AutomationAnywhere.node.js"
     ]
   },
   "devDependencies": {
