@@ -14,9 +14,31 @@ export const Operations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Manage',
-				value: 'manage',
-				action: 'Stop, Pause, or Resume an execution',
+				name: 'Pause',
+				value: 'pause',
+				action: 'Pause an execution',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/v3/activity/manage',
+					},
+				},
+			},
+			{
+				name: 'Resume',
+				value: 'resume',
+				action: 'Resume an execution',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/v3/activity/manage',
+					},
+				},
+			},
+			{
+				name: 'Stop',
+				value: 'stop',
+				action: 'Stop an execution',
 				routing: {
 					request: {
 						method: 'POST',

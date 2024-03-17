@@ -44,6 +44,7 @@ export class AutomationAnywhere implements INodeType {
 					{
 						name: 'Execution Orchestrator',
 						value: 'ExecutionOrchestrator',
+						description: 'List, Start, Stop, Pause or Resume an execution'
 					},
 				],
 				default: 'ExecutionOrchestrator',

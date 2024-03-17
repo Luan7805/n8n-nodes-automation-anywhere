@@ -2,36 +2,6 @@ import { INodeProperties } from 'n8n-workflow';
 
 const manage: INodeProperties[] = [
 	{
-		displayName: 'Action',
-		name: 'action',
-		description: 'Pause, resume or stop an execution by specifying the execution ID',
-		displayOptions: {
-			show: {
-				resource: ['ExecutionOrchestrator'],
-				operation: ['manage'],
-			},
-		},
-		type: 'options',
-		noDataExpression: true,
-		required: true,
-		options: [
-			{
-				name: 'Pause',
-				value: 'pause_executions',
-			},
-			{
-				name: 'Resume',
-				value: 'resume_executions',
-			},
-			{
-				name: 'Stop',
-				value: 'stop_executions',
-			},
-		],
-		default: '',
-	},
-
-	{
 		displayName: 'Execution ID',
 		name: 'executionID',
 		description: 'ID of execution',
@@ -40,12 +10,12 @@ const manage: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['ExecutionOrchestrator'],
-				operation: ['manage'],
+				operation: ['pause', 'resume', 'stop'],
 			},
 		},
 		routing: {
 			send: {
-				property: '={{$parameter.action}}',
+				property: '={{$parameter.operation}}_executions',
 				type: 'body',
 				value: '={{ {"execution_ids": [$value]} }}',
 			},
