@@ -14,6 +14,17 @@ export const Operations: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Start',
+				value: 'start',
+				action: 'Start a new bot',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/v3/automations/deploy',
+					},
+				},
+			},
+			{
 				name: 'Pause',
 				value: 'pause',
 				action: 'Pause an execution',

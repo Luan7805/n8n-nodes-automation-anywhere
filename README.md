@@ -1,10 +1,14 @@
-# <img src="nodes/AutomationAnywhere/AutomationAnywhere.svg"  height="40"> n8n Node for Automation Anywhere
+# <img src="nodes/AutomationAnywhere/AutomationAnywhere.svg" height="40"> n8n Node for Automation Anywhere
 
 This project is a work in progress. The initial goal is to provide node for integrating n8n workflows with Automation Anywhere.
 
 ## Todo
 - [x] Authentication credentials
 - [ ] Bot deploy
+  - [x] Basic bot deploy
+  - [x] Callback URL
+  - [ ] Callback Headers
+  - [ ] Bot Inputs
 - [ ] List Exectuions
 - [x] Manage Executions
 - [ ] Get Exectuions job
