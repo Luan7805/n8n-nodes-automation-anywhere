@@ -47,7 +47,7 @@ jobs:
 
       - name: Publish to npm
         run: |
-          npm version 0.1.0-${{ steps.commit_hash.outputs.hash }}
+          npm version ${{ steps.author_info.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

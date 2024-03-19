@@ -43,7 +43,7 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: 0
+		default: [0], // eslint-disable-line
 	},
 	{
 		displayName: 'Device Pools',
@@ -65,7 +65,7 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: 0,
+		default: [], // eslint-disable-line
 	},
 	{
 		displayName: 'Automation Priority',
