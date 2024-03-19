@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-automation-anywhere",
   "version": "0.1.0",
-  "description": "",
+  "description": "This project is a work in progress. n8n Node for Automation Anywhere. The initial goal is to provide node for integrating n8n workflows with Automation Anywhere.",
   "keywords": [
     "n8n-community-node-package",
     "automation-anywhere"
@@ -33,7 +33,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/AutomationAnywhere.credentials.js"
+      "dist/credentials/AutomationAnywhereApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/AutomationAnywhere/AutomationAnywhere.node.js"

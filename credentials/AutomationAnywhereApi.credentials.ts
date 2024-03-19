@@ -8,10 +8,10 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class AutomationAnywhere implements ICredentialType {
-	name = 'AutomationAnywhere';
+export class AutomationAnywhereApi implements ICredentialType {
+	name = 'automationAnywhereApi';
 
-	displayName = 'Automation Anywhere';
+	displayName = 'Automation Anywhere API';
 
 	properties: INodeProperties[] = [
 		{

@@ -58,6 +58,6 @@ export const Operations: INodeProperties[] = [
 				},
 			},
 		],
-		default: '',
+		default: 'start',
 	},
 ];

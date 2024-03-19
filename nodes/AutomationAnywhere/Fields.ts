@@ -22,7 +22,7 @@ const Start: INodeProperties[] = [
 		default: '',
 	},
 	{
-		displayName: 'Bot runners',
+		displayName: 'Bot Runners',
 		name: 'runAsUserIds',
 		description: 'ID of Bot runners users',
 		type: 'number',
@@ -43,13 +43,12 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: [0]
+		default: 0
 	},
 	{
-		displayName: 'Device pools',
+		displayName: 'Device Pools',
 		name: 'poolIds',
 		type: 'number',
-		required: false,
 		displayOptions: {
 			show: {
 				resource: ['ExecutionOrchestrator'],
@@ -66,10 +65,10 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: [],
+		default: 0,
 	},
 	{
-		displayName: 'Automation priority',
+		displayName: 'Automation Priority',
 		name: 'AutomationPriority',
 		displayOptions: {
 			show: {
@@ -120,7 +119,6 @@ const Start: INodeProperties[] = [
 		name: 'callbackInfo',
 		placeholder: 'https://callbackserver.com/storeBotExecutionStatus',
 		type: 'string',
-		required: false,
 		displayOptions: {
 			hide: {
 				Callback: [false]
@@ -140,7 +138,7 @@ const Start: INodeProperties[] = [
 		default: ''
 	},
 	{
-		displayName: 'Number of bot runners to use',
+		displayName: 'Number of Bot Runners to Use',
 		name: 'numOfRunAsUsersToUse',
 		type: 'number',
 		required: true,
@@ -178,7 +176,7 @@ const Start: INodeProperties[] = [
 		default: false,
 	},
 	{
-		displayName: 'Run with administrative privileges',
+		displayName: 'Run with Administrative Privileges',
 		name: 'runElevated',
 		type: 'boolean',
 		required: true,

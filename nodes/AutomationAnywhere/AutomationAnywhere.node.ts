@@ -6,7 +6,7 @@ import {Fields} from "./Fields";
 export class AutomationAnywhere implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Automation Anywhere',
-		name: 'AutomationAnywhere',
+		name: 'automationAnywhere',
 		icon: 'file:AutomationAnywhere.svg',
 		group: ['transform'],
 		version: 1,
@@ -20,7 +20,7 @@ export class AutomationAnywhere implements INodeType {
 
 		credentials: [
 			{
-				name: 'AutomationAnywhere',
+				name: 'automationAnywhereApi',
 				required: true,
 			},
 		],
