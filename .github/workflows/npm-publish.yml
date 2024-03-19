@@ -1,0 +1,53 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build package
+        run: npm run build
+
+      - name: Get commit hash
+        id: commit_hash
+        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+
+      - name: Get info from package.json
+        id: author_info
+        run: |
+          AUTHOR_NAME=$(jq -r '.author.name' < package.json)
+          AUTHOR_EMAIL=$(jq -r '.author.email' < package.json)
+          PACKAGE_VERSION=$(jq -r '.version' < package.json)
+          echo "::set-output name=name::${AUTHOR_NAME}"
+          echo "::set-output name=email::${AUTHOR_EMAIL}"
+          echo "::set-output name=version::${PACKAGE_VERSION}"
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "${{ steps.author_info.outputs.name }}"
+          git config --global user.email "${{ steps.author_info.outputs.email }}"
+
+      - name: Set up npm authentication
+        run: npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Publish to npm
+        run: |
+          npm version 0.1.0-${{ steps.commit_hash.outputs.hash }}
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
