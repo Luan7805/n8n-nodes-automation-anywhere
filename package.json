@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-automation-anywhere",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "This project is a work in progress. n8n Node for Automation Anywhere. The initial goal is to provide node for integrating n8n workflows with Automation Anywhere.",
   "keywords": [
     "n8n-community-node-package",

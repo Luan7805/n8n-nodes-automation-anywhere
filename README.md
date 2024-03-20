@@ -4,11 +4,11 @@ This project is a work in progress. The initial goal is to provide node for inte
 
 ## Todo
 - [x] Authentication credentials
-- [ ] Bot deploy
+- [x] Bot deploy
   - [x] Basic bot deploy
   - [x] Callback URL
-  - [ ] Callback Headers
-  - [ ] Bot Inputs
+  - [x] Callback Headers
+  - [x] Bot Inputs
 - [ ] List Exectuions
 - [x] Manage Executions
 - [ ] Get Exectuions job
