@@ -51,6 +51,17 @@ export const Operations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Get',
+				value: 'get',
+				action: 'Gets job execution',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '=/v3/activity/execution/{{$parameter.executionID}}',
+					},
+				},
+			},
+			{
 				name: 'Pause',
 				value: 'pause',
 				action: 'Pause an execution',

@@ -242,7 +242,7 @@ const Start: INodeProperties[] = [
 	},
 ];
 
-// archive, stop, Pause or Resume
+// Archive, Get, Stop, Pause or Resume
 const Manage: INodeProperties[] = [
 	{
 		displayName: 'Execution ID',
@@ -253,7 +253,7 @@ const Manage: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['ExecutionOrchestrator'],
-				operation: ['archive', 'pause', 'resume', 'stop'],
+				operation: ['archive', 'get', 'pause', 'resume', 'stop'],
 			},
 		},
 		routing: {

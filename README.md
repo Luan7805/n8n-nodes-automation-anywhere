@@ -16,7 +16,7 @@ This project is a work in progress. The initial goal is to provide node for inte
   - [x] Stop
   - [x] Archive
 - [ ] Get Executions job
-  - [ ] Single
+  - [x] Single
   - [ ] Many
 
 
