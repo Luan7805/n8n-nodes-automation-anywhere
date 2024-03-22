@@ -242,8 +242,8 @@ const Start: INodeProperties[] = [
 	},
 ];
 
-// Stop, Pause or Resume
-const manage: INodeProperties[] = [
+// archive, stop, Pause or Resume
+const Manage: INodeProperties[] = [
 	{
 		displayName: 'Execution ID',
 		name: 'executionID',
@@ -253,7 +253,7 @@ const manage: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['ExecutionOrchestrator'],
-				operation: ['pause', 'resume', 'stop'],
+				operation: ['archive', 'pause', 'resume', 'stop'],
 			},
 		},
 		routing: {
@@ -269,5 +269,5 @@ const manage: INodeProperties[] = [
 
 export const Fields: INodeProperties[] = [
 	...Start,
-	...manage,
+	...Manage,
 ];

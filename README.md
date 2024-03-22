@@ -9,9 +9,15 @@ This project is a work in progress. The initial goal is to provide node for inte
   - [x] Callback URL
   - [x] Callback Headers
   - [x] Bot Inputs
-- [ ] List Exectuions
 - [x] Manage Executions
-- [ ] Get Exectuions job
+	- [x] Start
+	- [x] Pause
+  - [x] Resume
+  - [x] Stop
+  - [x] Archive
+- [ ] Get Executions job
+  - [ ] Single
+  - [ ] Many
 
 
 ## Run locally

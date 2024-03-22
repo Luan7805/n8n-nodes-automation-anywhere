@@ -1,4 +1,4 @@
-import { INodeProperties } from 'n8n-workflow';
+import {IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties} from 'n8n-workflow';
 
 export const Operations: INodeProperties[] = [
 	{
@@ -13,6 +13,32 @@ export const Operations: INodeProperties[] = [
 			},
 		},
 		options: [
+			{
+				name: 'Archive',
+				value: 'archive',
+				action: 'Archive an queue execution',
+				routing: {
+					request: {
+						method: 'PUT',
+						url: '/v1/activity/auditunknown',
+						headers: {
+							Accept: 'text/json',
+							'Content-Type': 'text/plain',
+						},
+					},
+					send: {
+						preSend: [
+							async function (
+								this: IExecuteSingleFunctions,
+								requestOptions: IHttpRequestOptions,
+							): Promise<IHttpRequestOptions> {
+								requestOptions.body = '"' + this.getNodeParameter('executionID') + '"';
+								return requestOptions;
+							},
+						],
+					},
+				},
+			},
 			{
 				name: 'Start',
 				value: 'start',
