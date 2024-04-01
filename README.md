@@ -15,9 +15,9 @@ This project is a work in progress. The initial goal is to provide node for inte
   - [x] Resume
   - [x] Stop
   - [x] Archive
-- [ ] Get Executions job
+- [X] Get Executions job
   - [x] Single
-  - [ ] Many
+  - [X] Many
 
 
 ## Run locally

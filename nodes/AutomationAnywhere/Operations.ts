@@ -62,6 +62,17 @@ export const Operations: INodeProperties[] = [
 				},
 			},
 			{
+				name: 'Get Many',
+				value: 'getMany',
+				action: 'Get many job executions',
+				routing: {
+					request: {
+						method: 'POST',
+						url: '/v3/activity/list',
+					},
+				},
+			},
+			{
 				name: 'Pause',
 				value: 'pause',
 				action: 'Pause an execution',

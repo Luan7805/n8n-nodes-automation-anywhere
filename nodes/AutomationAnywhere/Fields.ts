@@ -242,6 +242,184 @@ const Start: INodeProperties[] = [
 	},
 ];
 
+const GetMany: INodeProperties[] = [
+	{
+		displayName: 'Filters',
+		name: 'filters',
+		type: 'fixedCollection',
+		displayOptions: {
+			show: {
+				resource: ['ExecutionOrchestrator'],
+				operation: ['getMany'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Conditions',
+				name: 'conditions',
+				values: [
+					{
+						displayName: 'Condition Type',
+						name: 'operator',
+						type: 'options',
+						routing: {
+							send: {
+								property: 'filter.operator',
+								type: 'body',
+							}
+						},
+						options: [
+							{
+								name: 'Equals',
+								value: 'eq',
+							},
+							{
+								name: 'Greater',
+								value: 'gt',
+							},
+							{
+								name: 'Greater or Equal',
+								value: 'ge',
+							},
+							{
+								name: 'Less',
+								value: 'lt',
+							},
+							{
+								name: 'Less or Equal',
+								value: 'le',
+							},
+							{
+								name: 'Not Equal',
+								value: 'ne',
+							},
+						],
+						default: 'eq',
+					},
+					{
+						displayName: 'Field',
+						name: 'field',
+						description: 'Any searchable field',
+						type: 'string',
+						routing: {
+							send: {
+								property: 'filter.field',
+								type: 'body',
+							}
+						},
+						default: '',
+					},
+					{
+						displayName: 'Value',
+						name: 'value',
+						type: 'string',
+						routing: {
+							send: {
+								property: 'filter.value',
+								type: 'body',
+							}
+						},
+						default: '',
+					},
+				],
+			},
+		],
+		default: {},
+	},
+	{
+		displayName: 'Limit',
+		name: 'limit',
+		description: 'Max number of results to return',
+		type: 'number',
+		typeOptions: {
+			minValue: 1,
+		},
+		displayOptions: {
+			show: {
+				resource: ['ExecutionOrchestrator'],
+				operation: ['getMany'],
+			},
+		},
+		routing: {
+			send: {
+				property: 'page.length',
+				type: 'body',
+			},
+		},
+		default: 50,
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Option',
+		displayOptions: {
+			show: {
+				resource: ['ExecutionOrchestrator'],
+				operation: ['getMany'],
+			},
+		},
+		options: [
+			{
+				displayName: 'Sort',
+				name: 'sort',
+				type: 'fixedCollection',
+				typeOptions: {
+					multipleValues: true
+				},
+				placeholder: 'Add Sort',
+				options: [
+					{
+						displayName: 'Sort',
+						name: 'sort',
+						values: [
+							{
+								displayName: 'Direction',
+								name: 'direction',
+								description: 'The sorting direction',
+								type: 'options',
+								options: [
+									{
+										name: 'Ascending',
+										value: 'ASC',
+									},
+									{
+										name: 'Descending',
+										value: 'DESC',
+									},
+								],
+								routing: {
+									send: {
+										property: '=sort.[{{$index}}].direction',
+										type: 'body',
+									}
+								},
+								default: 'ASC',
+							},
+							{
+								displayName: 'Field',
+								name: 'field',
+								description: 'The sorting field',
+								type: 'string',
+								required: true,
+								routing: {
+									send: {
+										property: '=sort.[{{$index}}].field',
+										type: 'body',
+									}
+								},
+								default: '',
+							},
+						],
+					},
+				],
+				default: {},
+			},
+		],
+		default: {},
+	},
+];
+
 // Archive, Get, Stop, Pause or Resume
 const Manage: INodeProperties[] = [
 	{
@@ -269,5 +447,6 @@ const Manage: INodeProperties[] = [
 
 export const Fields: INodeProperties[] = [
 	...Start,
+	...GetMany,
 	...Manage,
 ];
