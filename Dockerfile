@@ -2,6 +2,7 @@ FROM node:18-alpine AS build
 RUN npm i npm@latest -g
 WORKDIR /build
 COPY . .
+RUN npm install
 RUN npm run build
 
 FROM docker.n8n.io/n8nio/n8n:latest
