@@ -15,7 +15,7 @@ const Start: INodeProperties[] = [
 		},
 		routing: {
 			send: {
-				property: 'fileId',
+				property: 'botId',
 				type: 'body',
 			},
 		},
@@ -39,16 +39,16 @@ const Start: INodeProperties[] = [
 		},
 		routing: {
 			send: {
-				property: 'runAsUserIds',
+				property: 'unattendedRequest.runAsUserIds',
 				type: 'body',
 			},
 		},
 		default: [0], // eslint-disable-line
 	},
 	{
-		displayName: 'Number of Bot Runners to Use',
-		name: 'numOfRunAsUsersToUse',
-		type: 'number',
+		displayName: 'Device Configuration',
+		name: 'deviceUsageType',
+		type: 'options',
 		required: true,
 		displayOptions: {
 			show: {
@@ -56,13 +56,27 @@ const Start: INodeProperties[] = [
 				operation: ['start'],
 			},
 		},
+		options: [
+			{
+				name: 'Prefer Default Device',
+				value: 'PREFER_DEFAULT_DEVICE',
+			},
+			{
+				name: 'Run Only on Default Device',
+				value: 'RUN_ONLY_ON_DEFAULT_DEVICE',
+			},
+			{
+				name: 'Run on Pool Device',
+				value: 'RUN_ON_POOL_DEVICES',
+			},
+		],
 		routing: {
 			send: {
-				property: 'numOfRunAsUsersToUse',
+				property: 'unattendedRequest.deviceUsageType',
 				type: 'body',
 			},
 		},
-		default: 1,
+		default: 'PREFER_DEFAULT_DEVICE',
 	},
 	{
 		displayName: 'Additional Fields',
@@ -153,11 +167,24 @@ const Start: INodeProperties[] = [
 				},
 				routing: {
 					send: {
-						property: 'poolIds',
+						property: 'unattendedRequest.poolIds',
 						type: 'body',
 					},
 				},
 				default: [], // eslint-disable-line
+			},
+			{
+				displayName: 'Hide Bot Run Window',
+				name: 'hideBotAgentUi',
+				type: 'boolean',
+				required: true,
+				routing: {
+					send: {
+						property: 'hideBotAgentUi',
+						type: 'body',
+					},
+				},
+				default: true,
 			},
 			{
 				displayName: 'Label',
@@ -186,17 +213,17 @@ const Start: INodeProperties[] = [
 				default: '',
 			},
 			{
-				displayName: 'Override Default Device',
-				name: 'overrideDefaultDevice',
-				type: 'boolean',
+				displayName: 'Number of Bot Runners to Use',
+				name: 'numOfRunAsUsersToUse',
+				type: 'number',
 				required: true,
 				routing: {
 					send: {
-						property: 'overrideDefaultDevice',
+						property: 'unattendedRequest.numOfRunAsUsersToUse',
 						type: 'body',
 					},
 				},
-				default: false,
+				default: 1,
 			},
 			{
 				displayName: 'Priority',
@@ -219,7 +246,7 @@ const Start: INodeProperties[] = [
 				],
 				routing: {
 					send: {
-						property: 'AutomationPriority',
+						property: 'automationPriority',
 						type: 'body',
 					},
 				},

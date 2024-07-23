@@ -46,7 +46,7 @@ export const Operations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/v3/automations/deploy',
+						url: '/v4/automations/deploy',
 					},
 				},
 			},
