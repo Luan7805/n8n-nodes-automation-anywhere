@@ -22,10 +22,10 @@ const Start: INodeProperties[] = [
 		default: '',
 	},
 	{
-		displayName: 'Bot Runners',
+		displayName: 'Bot Runners IDs',
 		name: 'runAsUserIds',
-		description: 'ID of Bot runners users',
-		type: 'number',
+		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+		type: 'multiOptions',
 		required: true,
 		displayOptions: {
 			show: {
@@ -34,8 +34,7 @@ const Start: INodeProperties[] = [
 			},
 		},
 		typeOptions: {
-			multipleValues: true,
-			multipleValueButtonText: 'Add User',
+			loadOptionsMethod: 'getRunners',
 		},
 		routing: {
 			send: {
@@ -43,7 +42,7 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: [0], // eslint-disable-line
+		default: [], // eslint-disable-line
 	},
 	{
 		displayName: 'Device Configuration',
