@@ -157,12 +157,12 @@ const Start: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'Device Pools',
+				displayName: 'Device Pools IDs',
 				name: 'poolIds',
-				type: 'number',
+				description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+				type: 'multiOptions',
 				typeOptions: {
-					multipleValues: true,
-					multipleValueButtonText: 'Add Pool',
+					loadOptionsMethod: 'getPools',
 				},
 				routing: {
 					send: {

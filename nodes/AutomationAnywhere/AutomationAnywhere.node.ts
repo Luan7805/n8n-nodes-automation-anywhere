@@ -84,6 +84,27 @@ export class AutomationAnywhere implements INodeType {
 					return {name, value};
 				});
 			},
+
+			async getPools(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+				const body: BodyWithPagination = {
+					sort: [{field: 'name', direction: 'asc'}],
+					page: {length: 10, offset: 0}
+				};
+				const responseData = await aaApiRequestAllItems.call(
+					this,
+					'list',
+					'POST',
+					'/v2/devices/pools/list',
+					body
+				);
+
+				const pools = responseData as [{ id: number; name: string }];
+				return pools.map((pool) => {
+					const name = pool.name;
+					const value = pool.id;
+					return {name, value};
+				});
+			},
 		}
 	};
 }
