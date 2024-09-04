@@ -9,8 +9,8 @@ This project is a work in progress. The initial goal is to provide node for inte
   - [x] Callback URL
   - [x] Callback Headers
   - [x] Bot Inputs
-  - [ ] List users with unattended license
-  - [ ] List device pools
+  - [x] List users with unattended license
+  - [x] List device pools
 - [x] Manage Executions
 	- [x] Start
 	- [x] Pause

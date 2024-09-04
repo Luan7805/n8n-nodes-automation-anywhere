@@ -22,10 +22,10 @@ const Start: INodeProperties[] = [
 		default: '',
 	},
 	{
-		displayName: 'Bot Runners',
+		displayName: 'Bot Runners IDs',
 		name: 'runAsUserIds',
-		description: 'ID of Bot runners users',
-		type: 'number',
+		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+		type: 'multiOptions',
 		required: true,
 		displayOptions: {
 			show: {
@@ -34,8 +34,7 @@ const Start: INodeProperties[] = [
 			},
 		},
 		typeOptions: {
-			multipleValues: true,
-			multipleValueButtonText: 'Add User',
+			loadOptionsMethod: 'getRunners',
 		},
 		routing: {
 			send: {
@@ -43,7 +42,7 @@ const Start: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-		default: [0], // eslint-disable-line
+		default: [], // eslint-disable-line
 	},
 	{
 		displayName: 'Device Configuration',
@@ -94,17 +93,66 @@ const Start: INodeProperties[] = [
 			{
 				displayName: 'Bot Inputs',
 				name: 'botInput',
-				type: 'json',
+				type: 'fixedCollection',
+				default: {},
 				typeOptions: {
-					alwaysOpenEditWindow: true,
+					multipleValues: true,
 				},
-				routing: {
-					send: {
-						property: 'botInput',
-						type: 'body',
+				options: [
+					{
+						name: 'values',
+						displayName: 'Value',
+						values: [
+							{
+								displayName: 'varName',
+								name: 'varName',
+								type: 'string',
+								required: true,
+								default: '',
+							},
+							{
+								displayName: 'Type',
+								name: 'type',
+								type: 'options',
+								options: [
+									{
+										name: 'String',
+										value: 'STRING',
+									},
+									{
+										name: 'Number',
+										value: 'NUMBER',
+									},
+									{
+										name: 'Boolean',
+										value: 'BOOLEAN',
+									},
+								],
+								default: '',
+								routing: {
+									send: {
+										value: '={{$value}}',
+										property: '=botInput.{{$parent.varName}}.type',
+										type: 'body',
+									},
+								},
+							},
+							{
+								displayName: 'Value',
+								name: 'valueString',
+								type: 'string',
+								default: '',
+								routing: {
+									send: {
+										value: '={{$value}}',
+										property: '=botInput.{{$parent.varName}}.{{$parent.type.toLowerCase()}}',
+										type: 'body',
+									},
+								},
+							},
+						],
 					},
-				},
-				default: '{\n   "myNumberVar":{\n      "type":"NUMBER",\n      "number":123\n   },\n   "myStringVar":{\n      "type":"STRING",\n      "string":"myValue"\n   },\n   "myBooleanVar":{\n      "type":"BOOLEAN",\n      "boolean":true\n   }\n}'
+				],
 			},
 			{
 				displayName: 'Callback Url',
@@ -158,12 +206,12 @@ const Start: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'Device Pools',
+				displayName: 'Device Pools IDs',
 				name: 'poolIds',
-				type: 'number',
+				description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+				type: 'multiOptions',
 				typeOptions: {
-					multipleValues: true,
-					multipleValueButtonText: 'Add Pool',
+					loadOptionsMethod: 'getPools',
 				},
 				routing: {
 					send: {
