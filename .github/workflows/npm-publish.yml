@@ -23,31 +23,18 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Get commit hash
-        id: commit_hash
-        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
-
-      - name: Get info from package.json
-        id: author_info
+      - name: Get project info
+        id: project_info
         run: |
-          AUTHOR_NAME=$(jq -r '.author.name' < package.json)
-          AUTHOR_EMAIL=$(jq -r '.author.email' < package.json)
-          PACKAGE_VERSION=$(jq -r '.version' < package.json)
-          echo "::set-output name=name::${AUTHOR_NAME}"
-          echo "::set-output name=email::${AUTHOR_EMAIL}"
-          echo "::set-output name=version::${PACKAGE_VERSION}"
-
-      - name: Set up Git
-        run: |
-          git config --global user.name "${{ steps.author_info.outputs.name }}"
-          git config --global user.email "${{ steps.author_info.outputs.email }}"
+          echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "version=$(jq -r '.version' < package.json)" >> $GITHUB_OUTPUT
 
       - name: Set up npm authentication
         run: npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Publish to npm
         run: |
-          npm version ${{ steps.author_info.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
+          npm version --no-git-tag-version ${{ steps.project_info.outputs.version }}-${{ steps.project_info.outputs.hash }}
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
