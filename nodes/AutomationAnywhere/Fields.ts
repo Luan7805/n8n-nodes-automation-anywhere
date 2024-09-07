@@ -128,7 +128,7 @@ const Start: INodeProperties[] = [
 										value: 'BOOLEAN',
 									},
 								],
-								default: '',
+								default: 'STRING',
 								routing: {
 									send: {
 										value: '={{$value}}',
