@@ -277,7 +277,6 @@ const Start: INodeProperties[] = [
 				displayName: 'Priority',
 				name: 'AutomationPriority',
 				type: 'options',
-				noDataExpression: true,
 				options: [
 					{
 						name: 'High',
