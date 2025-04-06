@@ -6,11 +6,10 @@ import {
 	NodeConnectionType,
 } from 'n8n-workflow';
 
-import type {BodyWithPagination} from "./GenericFunctions";
-import {Operations} from "./Operations";
-import {Fields} from "./Fields";
-import {aaApiRequestAllItems} from "./GenericFunctions";
-
+import type { BodyWithPagination } from './GenericFunctions';
+import { Operations } from './Operations';
+import { Fields } from './Fields';
+import { aaApiRequestAllItems } from './GenericFunctions';
 
 export class AutomationAnywhere implements INodeType {
 	description: INodeTypeDescription = {
@@ -53,7 +52,7 @@ export class AutomationAnywhere implements INodeType {
 					{
 						name: 'Execution Orchestrator',
 						value: 'ExecutionOrchestrator',
-						description: 'List, Start, Stop, Pause or Resume an execution'
+						description: 'List, Start, Stop, Pause or Resume an execution',
 					},
 				],
 				default: 'ExecutionOrchestrator',
@@ -68,45 +67,45 @@ export class AutomationAnywhere implements INodeType {
 		loadOptions: {
 			async getRunners(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 				const body: BodyWithPagination = {
-					sort: [{field: 'username', direction: 'asc'}],
-					page: {length: 10, offset: 0}
+					sort: [{ field: 'username', direction: 'asc' }],
+					page: { length: 10, offset: 0 },
 				};
 				const responseData = await aaApiRequestAllItems.call(
 					this,
 					'list',
 					'POST',
 					'/v1/devices/runasusers/list',
-					body
+					body,
 				);
 
 				const users = responseData as [{ id: number; username: string }];
 				return users.map((user) => {
 					const name = user.username;
 					const value = user.id;
-					return {name, value};
+					return { name, value };
 				});
 			},
 
 			async getPools(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 				const body: BodyWithPagination = {
-					sort: [{field: 'name', direction: 'asc'}],
-					page: {length: 10, offset: 0}
+					sort: [{ field: 'name', direction: 'asc' }],
+					page: { length: 10, offset: 0 },
 				};
 				const responseData = await aaApiRequestAllItems.call(
 					this,
 					'list',
 					'POST',
 					'/v2/devices/pools/list',
-					body
+					body,
 				);
 
 				const pools = responseData as [{ id: number; name: string }];
 				return pools.map((pool) => {
 					const name = pool.name;
 					const value = pool.id;
-					return {name, value};
+					return { name, value };
 				});
 			},
-		}
+		},
 	};
 }

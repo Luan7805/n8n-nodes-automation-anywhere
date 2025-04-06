@@ -24,7 +24,8 @@ const Start: INodeProperties[] = [
 	{
 		displayName: 'Bot Runners IDs',
 		name: 'runAsUserIds',
-		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+		description:
+			'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		type: 'multiOptions',
 		required: true,
 		displayOptions: {
@@ -115,18 +116,9 @@ const Start: INodeProperties[] = [
 								name: 'type',
 								type: 'options',
 								options: [
-									{
-										name: 'String',
-										value: 'STRING',
-									},
-									{
-										name: 'Number',
-										value: 'NUMBER',
-									},
-									{
-										name: 'Boolean',
-										value: 'BOOLEAN',
-									},
+									{ name: 'String', value: 'STRING' },
+									{ name: 'Number', value: 'NUMBER' },
+									{ name: 'Boolean', value: 'BOOLEAN' },
 								],
 								default: 'STRING',
 								routing: {
@@ -153,20 +145,6 @@ const Start: INodeProperties[] = [
 						],
 					},
 				],
-			},
-			{
-				displayName: 'Callback Url',
-				name: 'callbackUrl',
-				type: 'string',
-				placeholder: 'https://callbackserver.com/storeBotExecutionStatus',
-				routing: {
-					send: {
-						property: 'callbackInfo.url',
-						type: 'body',
-						value: '={{$value}}',
-					},
-				},
-				default: '',
 			},
 			{
 				displayName: 'Callback Headers',
@@ -206,9 +184,24 @@ const Start: INodeProperties[] = [
 				],
 			},
 			{
+				displayName: 'Callback Url',
+				name: 'callbackUrl',
+				type: 'string',
+				placeholder: 'https://callbackserver.com/storeBotExecutionStatus',
+				routing: {
+					send: {
+						property: 'callbackInfo.url',
+						type: 'body',
+						value: '={{$value}}',
+					},
+				},
+				default: '',
+			},
+			{
 				displayName: 'Device Pools IDs',
 				name: 'poolIds',
-				description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+				description:
+					'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
 				type: 'multiOptions',
 				typeOptions: {
 					loadOptionsMethod: 'getPools',
@@ -219,7 +212,7 @@ const Start: INodeProperties[] = [
 						type: 'body',
 					},
 				},
-				default: [], // eslint-disable-line
+				default: [],
 			},
 			{
 				displayName: 'Hide Bot Run Window',
@@ -278,18 +271,9 @@ const Start: INodeProperties[] = [
 				name: 'AutomationPriority',
 				type: 'options',
 				options: [
-					{
-						name: 'High',
-						value: 'PRIORITY_HIGH',
-					},
-					{
-						name: 'Medium',
-						value: 'PRIORITY_MEDIUM',
-					},
-					{
-						name: 'Low',
-						value: 'PRIORITY_LOW',
-					},
+					{ name: 'High', value: 'PRIORITY_HIGH' },
+					{ name: 'Medium', value: 'PRIORITY_MEDIUM' },
+					{ name: 'Low', value: 'PRIORITY_LOW' },
 				],
 				routing: {
 					send: {
@@ -340,7 +324,7 @@ const GetMany: INodeProperties[] = [
 							send: {
 								property: 'filter.operator',
 								type: 'body',
-							}
+							},
 						},
 						options: [
 							{
@@ -379,7 +363,7 @@ const GetMany: INodeProperties[] = [
 							send: {
 								property: 'filter.field',
 								type: 'body',
-							}
+							},
 						},
 						default: '',
 					},
@@ -391,7 +375,7 @@ const GetMany: INodeProperties[] = [
 							send: {
 								property: 'filter.value',
 								type: 'body',
-							}
+							},
 						},
 						default: '',
 					},
@@ -439,7 +423,7 @@ const GetMany: INodeProperties[] = [
 				name: 'sort',
 				type: 'fixedCollection',
 				typeOptions: {
-					multipleValues: true
+					multipleValues: true,
 				},
 				placeholder: 'Add Sort',
 				options: [
@@ -466,7 +450,7 @@ const GetMany: INodeProperties[] = [
 									send: {
 										property: '=sort.[{{$index}}].direction',
 										type: 'body',
-									}
+									},
 								},
 								default: 'ASC',
 							},
@@ -480,7 +464,7 @@ const GetMany: INodeProperties[] = [
 									send: {
 										property: '=sort.[{{$index}}].field',
 										type: 'body',
-									}
+									},
 								},
 								default: '',
 							},
@@ -519,8 +503,4 @@ const Manage: INodeProperties[] = [
 	},
 ];
 
-export const Fields: INodeProperties[] = [
-	...Start,
-	...GetMany,
-	...Manage,
-];
+export const Fields: INodeProperties[] = [...Start, ...GetMany, ...Manage];

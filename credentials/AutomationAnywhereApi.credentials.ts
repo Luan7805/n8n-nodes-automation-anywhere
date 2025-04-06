@@ -43,7 +43,7 @@ export class AutomationAnywhereApi implements ICredentialType {
 				{
 					name: 'Username/Password',
 					value: 'password',
-				}
+				},
 			],
 			default: 'apiKey',
 		},
@@ -70,8 +70,8 @@ export class AutomationAnywhereApi implements ICredentialType {
 		const url = credentials.url as string;
 		const authType = credentials.authType as string;
 		const requestBody: Record<string, CredentialInformation> = {
-			'username': credentials.username,
-			[authType]: credentials.authSecret
+			username: credentials.username,
+			[authType]: credentials.authSecret,
 		};
 
 		const { token } = (await this.helpers.httpRequest({
@@ -94,7 +94,7 @@ export class AutomationAnywhereApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.url.replace(new RegExp("/$"), "")}}',
-			method: "POST",
+			method: 'POST',
 			url: '/v2/authentication/token',
 		},
 	};

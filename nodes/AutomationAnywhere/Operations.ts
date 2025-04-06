@@ -1,4 +1,4 @@
-import {IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties} from 'n8n-workflow';
+import { IExecuteSingleFunctions, IHttpRequestOptions, INodeProperties } from 'n8n-workflow';
 
 export const Operations: INodeProperties[] = [
 	{
