@@ -23,7 +23,9 @@ export class AutomationAnywhere implements INodeType {
 		defaults: {
 			name: 'AutomationAnywhere',
 		},
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-inputs-wrong-regular-node
 		inputs: [NodeConnectionType.Main],
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-outputs-wrong
 		outputs: [NodeConnectionType.Main],
 
 		credentials: [
