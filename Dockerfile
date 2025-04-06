@@ -1,5 +1,5 @@
-FROM node:18-alpine AS build
-RUN npm i npm@latest -g
+FROM node:20-alpine AS build
+RUN npm i npm@10 -g
 WORKDIR /build
 COPY . .
 RUN npm install

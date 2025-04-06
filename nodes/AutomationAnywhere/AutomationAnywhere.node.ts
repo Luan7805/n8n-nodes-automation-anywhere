@@ -3,7 +3,9 @@ import {
 	INodePropertyOptions,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionType,
 } from 'n8n-workflow';
+
 import type {BodyWithPagination} from "./GenericFunctions";
 import {Operations} from "./Operations";
 import {Fields} from "./Fields";
@@ -22,8 +24,8 @@ export class AutomationAnywhere implements INodeType {
 		defaults: {
 			name: 'AutomationAnywhere',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 
 		credentials: [
 			{

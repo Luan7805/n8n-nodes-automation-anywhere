@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-automation-anywhere",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "This project is a work in progress. n8n Node for Automation Anywhere. The initial goal is to provide node for integrating n8n workflows with Automation Anywhere.",
   "keywords": [
     "n8n-community-node-package",
@@ -40,14 +40,15 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "~6.3.0",
+    "@typescript-eslint/parser": "^8.29.0",
     "copyfiles": "^2.4.1",
-    "eslint-plugin-n8n-nodes-base": "^1.16.0",
-    "prettier": "^3.0.1",
-    "rimraf": "^5.0.7",
-    "typescript": "~5.1.6"
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "prettier": "^3.3.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "n8n-workflow": "*"
   }
 }
